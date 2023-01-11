@@ -17,16 +17,16 @@ export class PlayerService {
 
   //Create new data player
   async createPlayer(createPlayerDto: PlayerDto): Promise<Player>{
-    return await new this.playerModel(createPlayerDto).save();
+    return new this.playerModel(createPlayerDto).save();
   }
 
   //Find all data player
   async findAll(): Promise<Player[]>{
-    return this.playerModel.find({}).exec()
+    return this.playerModel.find({})
   }
 
   //Find player by id
-  async findOneById(id: string) {
+  async findOneById(id: string): Promise<Player | null> {
     const objId = this.playerModel.findById(id)
     if(!objId){
       throw new NotFoundException(`${id} not found.`)

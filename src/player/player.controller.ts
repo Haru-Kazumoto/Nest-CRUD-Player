@@ -23,6 +23,7 @@ export class PlayerController {
   @Post('create')
   @UsePipes(new ValidationPipe())
   create(@Body(PlayerPipe) createPlayerDto: PlayerDto) {
+    console.log(createPlayerDto)
     return this.playerService.createPlayer(createPlayerDto);
   }
 

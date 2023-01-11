@@ -9,7 +9,7 @@ import { PlayerSchema } from './entities/player.entity';
     MongooseModule.forFeature([{
       name: 'Player',
       schema: PlayerSchema
-    }])
+    }]),
   ],
   controllers: [PlayerController],
   providers: [PlayerService]
