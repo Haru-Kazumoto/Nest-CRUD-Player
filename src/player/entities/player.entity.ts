@@ -30,6 +30,10 @@ export class Player {
 
     @Prop({type: MongooseSchema.Types.ObjectId, ref: 'Item'})
     items: string;
+
+    @Prop({type: MongooseSchema.Types.ObjectId, ref: 'Achievement'})
+    achievements: String;
 }
+
 
 export const PlayerSchema = SchemaFactory.createForClass(Player)

@@ -1,8 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Type } from "class-transformer";
 import mongoose, { Document } from "mongoose";
-import { Item } from "src/items/entities/item.entity";
-import { Player } from "src/player/entities/player.entity";
 
 export type AccountDocument = Account & Document;
 
@@ -10,26 +7,27 @@ export type AccountDocument = Account & Document;
 export class Account {
 
     @Prop({
-        default: Math.random() * 10,
-        type: Number
+        default: Date.now()
     })
-    idAccount: Math
+    dateJoin: Date;
 
-    @Prop([{
+    @Prop({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Player'
-    }])
-    @Type(() => Player)
-    player: Player[];
+    })
+    players: string;
 
-    @Prop([{
-        type: mongoose.Schema.Types.ObjectId,
+    @Prop({
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Achievement'
+    })
+    achievements: string;
+
+    @Prop({
+        type: mongoose.Schema.Types.ObjectId, 
         ref: 'Item'
-    }])
-    items: Item[];
-
-    @Prop({default: Date.now()})
-    dateJoin: Date
+    })
+    items: string;
 }
 
 export const AccountSchema = SchemaFactory.createForClass(Account);

@@ -4,17 +4,17 @@ import { CreateAccountDto } from './dto/create-account.dto';
 
 @Controller('account')
 export class AccountController {
+
   constructor(private readonly accountService: AccountService) {}
 
-  @Post()
+  @Post('create')
   @UsePipes(new ValidationPipe)
   create(@Body() createAccountDto: CreateAccountDto) {
     return this.accountService.create(createAccountDto);
   }
 
-  @Get()
+  @Get('get')
   findAll() {
-    return this.accountService.findAll()
-    .populate('players.player');
+    return this.accountService.findAll();
   }
 }

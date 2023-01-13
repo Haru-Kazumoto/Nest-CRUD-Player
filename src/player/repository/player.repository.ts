@@ -15,6 +15,8 @@ export class PlayerRepository{
     }
 
     async findAll(): Promise<Player[]>{
-        return this.playerModel.find({}).populate('items');
+        return this.playerModel.find({})
+        .populate('items')
+        .populate('achievements');
     }
 }
