@@ -5,10 +5,8 @@ export type AchievementDocument = Achievement & Document
 
 @Schema()
 export class Achievement {
-
     @Prop()
     reward: String;
-
 }
 
 export const AchievementSchema = SchemaFactory.createForClass(Achievement);

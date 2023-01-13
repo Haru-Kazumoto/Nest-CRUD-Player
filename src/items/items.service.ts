@@ -4,17 +4,18 @@ import { UpdateItemDto } from './dto/update-item.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Item, ItemDocument } from './entities/item.entity';
 import { Model } from 'mongoose';
+import { ItemRepository } from './repository/item.repository';
 
 @Injectable()
 export class ItemsService {
 
-  constructor(@InjectModel('Item') private modelItem: Model<ItemDocument>){}
+  constructor(private itemRepository: ItemRepository){}
 
   async create(createItemDto: CreateItemDto): Promise<Item> {
-    return new this.modelItem(createItemDto).save();
+    return this.itemRepository.createItem(createItemDto);
   }
 
   async findAll(): Promise<Item[]> {
-    return this.modelItem.find({});
+    return this.itemRepository.findAllItem();
   }
 }

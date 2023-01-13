@@ -3,6 +3,7 @@ import { ItemsService } from './items.service';
 import { ItemsController } from './items.controller';
 import { Item, ItemSchema } from '../items/entities/item.entity';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ItemRepository } from './repository/item.repository';
 
 @Module({
   imports: [
@@ -14,6 +15,6 @@ import { MongooseModule } from '@nestjs/mongoose';
     ])
   ],
   controllers: [ItemsController],
-  providers: [ItemsService]
+  providers: [ItemsService, ItemRepository]
 })
 export class ItemsModule {}

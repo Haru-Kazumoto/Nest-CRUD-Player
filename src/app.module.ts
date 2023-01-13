@@ -6,6 +6,7 @@ import { PlayerModule } from './player/player.module';
 import { MONGO_CONNECTION } from './app.properties';
 import { ItemsModule } from './items/items.module';
 import { AchievementModule } from './achievement/achievement.module';
+import { AccountModule } from './account/account.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { AchievementModule } from './achievement/achievement.module';
     ),
     PlayerModule,
     ItemsModule,
-    AchievementModule
+    AchievementModule,
+    AccountModule
   ],
   controllers: [AppController],
   providers: [AppService],

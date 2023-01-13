@@ -3,6 +3,7 @@ import { PlayerService } from './player.service';
 import { PlayerController } from './player.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PlayerSchema } from './entities/player.entity';
+import { PlayerRepository } from './repository/player.repository';
 
 @Module({
   imports: [  
@@ -12,7 +13,7 @@ import { PlayerSchema } from './entities/player.entity';
     }]),
   ],
   controllers: [PlayerController],
-  providers: [PlayerService]
+  providers: [PlayerService, PlayerRepository]
 })
 
 export class PlayerModule {}
